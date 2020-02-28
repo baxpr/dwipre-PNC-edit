@@ -1,4 +1,4 @@
-# dwipre-PNC-EDIT
+# dwipre-PNC-edit
 
 Preprocessing pipeline with FSL 5.0.11 eddy, specific to PNC DTI dataset.
 
