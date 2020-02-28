@@ -50,6 +50,9 @@ fslmerge -t dwmri.nii.gz "${dti35_niigz}" "${dti36_niigz}"
 paste -d '\t' "${dti35_bvals}" "${dti36_bvals}" > dwmri.bvals
 paste -d '\t' "${dti35_bvecs}" "${dti36_bvecs}" > dwmri.bvecs
 
+## Get average b=0 of combined image set
+get_mask_from_b0 dwmri.nii.gz dwmri.bvals b0
+
 ## Index file (one value for each volume of the final combined dwi image set)
 # Assume all volumes had the same acq params, the first entry in acq_params.txt
 dim4=$(fslval dwmri.nii.gz dim4)

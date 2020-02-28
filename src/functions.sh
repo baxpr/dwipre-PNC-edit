@@ -41,7 +41,6 @@ function get_mask_from_b0 {
   dwi_file="${1}"       # Input DWI file
   bval_file="${2}"      # Matching bvals
   out_pfx="${3}"        # Prefix for outputs
-                        #    ${out_pfx}.nii.gz        Masked mean b=0
                         #    ${out_pfx}_mean.nii.gz   Mean b=0
                         #    ${out_pfx}_mask.nii.gz   Brain mask
   
@@ -75,9 +74,8 @@ function get_mask_from_b0 {
   fslmerge -t tmp_b0.nii.gz $(echo "${b0_files[@]}")
   fslmaths tmp_b0.nii.gz -Tmean "${out_pfx}_mean.nii.gz"
   
-  # Compute brain mask
-  echo "BET options -n -m ${bet_opts}"
-  bet "${out_pfx}_mean.nii.gz" "${out_pfx}" -n -m ${bet_opts}
+  # Use input brain mask
+  cp b0_mask.nii.gz "${out_pfx}_mask.nii.gz"
 
   # Clean up temp files
   rm -f ${b0_files[@]} tmp_b0.nii.gz

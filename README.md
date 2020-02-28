@@ -18,7 +18,7 @@ This version uses a supplied brain mask instead of finding one with BET.
 
     a. A mean b=0 image is computed from all available b=0 volumes.
     
-    b. BET is used to find a brain mask for the run.
+    b. The supplied brain mask is used.
     
     c. The mean intensity of in-brain voxels is computed.
     
@@ -26,9 +26,9 @@ This version uses a supplied brain mask instead of finding one with BET.
 
 2. The scaled images are combined into a single series.
 
-3. A mean b=0 image for the combined series is computed, and BET is used to compute a brain mask from it.
+3. A mean b=0 image for the combined series is computed.
 
-4. EDDY is run on the combined series, using the mask from the previous step.
+4. EDDY is run on the combined series, using the input brain mask.
 
 
 ## Inputs
@@ -41,7 +41,6 @@ This version uses a supplied brain mask instead of finding one with BET.
     --dti36_bvals <dti36.bvals>
     --dti36_bvecs <dti36.bvecs>
 
-    --bet_opts "-f 0.3 -R"            BET options (default shown)
     --acq_params "0 -1 0 0.05"        EDDY acq_params (default shown)
 
     --project <project_label>         Label information from XNAT
@@ -67,7 +66,7 @@ This version uses a supplied brain mask instead of finding one with BET.
     
     B0_MEAN             Mean of b=0 images from PRE_EDDY_NIFTI
     
-    B0_MASK             Brain mask found by BET applied to B0_MEAN
+    B0_MASK             Brain mask (supplied as input)
     
     DTIFIT              Basic dtifit results from eddy corrected data
 
