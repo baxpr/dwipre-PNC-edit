@@ -6,7 +6,7 @@ create_file_manifest.sh
 
 
 mkdir MANIFEST
-mv manifest.txt MANIFEST
+mv manifest_md5.txt MANIFEST
 
 
 mkdir PDF

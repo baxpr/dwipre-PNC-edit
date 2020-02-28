@@ -18,4 +18,4 @@ md5sum \
   b0_mean.nii.gz \
   b0_mask.nii.gz \
   dtifit_* \
-> manifest.txt
+>> manifest_md5.txt
